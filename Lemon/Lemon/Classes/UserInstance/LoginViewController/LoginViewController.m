@@ -38,9 +38,9 @@
     
     [Dem_LeanCloudData loginWithUserName:self.userNameTexiField.text pwd:self.passWordTexfield.text block:^(AVUser *user) {
         [[Dem_UserData shareInstance]logoutUser];
+           [[Dem_UserData shareInstance]loginWithUser:user];
+           [Dem_UserData shareInstance].isLog = YES;
         if (user !=nil) {
-               [[Dem_UserData shareInstance]loginWithUser:user];
-               [Dem_UserData shareInstance].isLog = YES;
             [self dismissViewControllerAnimated:YES completion:^{
             }];
         }

@@ -43,8 +43,8 @@
               UIColor *color = DAGRandomColor;    // 字符对应的随机色
               
               // 在字符对应的点上画出字符(随机字体，随机颜色)
-              NSDictionary *dict = @{NSFontAttributeName : [UIFont fontWithName:fontArray[arc4random() % (fontArray.count - 13)] size:30], NSForegroundColorAttributeName : color};
-              [str drawAtPoint:CGPointMake(10 + i * width, 10) withAttributes:dict];
+              NSDictionary *dict = @{NSFontAttributeName : [UIFont fontWithName:fontArray[arc4random() % (fontArray.count - 13)] size:20], NSForegroundColorAttributeName : color};
+              [str drawAtPoint:CGPointMake(0 + i * width, 0) withAttributes:dict];
        }
        
        // 绘制干扰线

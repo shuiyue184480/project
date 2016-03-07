@@ -10,7 +10,7 @@
 #import "Dem_LeanCloudData.h"
 #import "Dem_UserModel.h"
 #import "Dem_RongData.h"
-
+#import "DAGAuthCodeView.h"
 @interface RegisterViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;
 
@@ -29,40 +29,82 @@
 
 @property(nonatomic,strong)Dem_UserModel *model;
 
+@property (nonatomic, strong)DAGAuthCodeView *codeView;
+
 @end
 
 @implementation RegisterViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+     
     self.photoView.userInteractionEnabled = YES;
     //轻拍手势
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction)];
     [self.photoView addGestureRecognizer:tap];
     [self.registerButton addTarget:self action:@selector(registAction) forControlEvents:UIControlEventTouchUpInside];
-    
+       self.codeView.userInteractionEnabled = YES;
+       self.identifyCodeMakeTextField.userInteractionEnabled = YES;
+       self.codeView = [[DAGAuthCodeView alloc] initWithFrame:CGRectMake(0, 0, self.identifyCodeMakeTextField.frame.size.width, self.identifyCodeMakeTextField.frame.size.height - 5)];
+       UITapGestureRecognizer *authcodeTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
+       [self.codeView addGestureRecognizer:authcodeTap];
+       [self.identifyCodeMakeTextField addSubview:self.codeView];
+       
+       
+       
+       
     // Do any additional setup after loading the view.
 }
 
 
+
 -(void)registAction{
-    Dem_RongData *token = [[Dem_RongData alloc]init];
-    [token postRequestWithName:self.userNameTextfield.text block:^(NSString *token) {
-        self.model = [[Dem_UserModel alloc]init];
-        self.model.photo = self.photoView.image;
-        self.model.username = self.userNameTextfield.text;
-        self.model.password = self.passWordTextField.text;
-        //        self.model.email = self.mailAddressTextField.text;
-        self.model.token = token;
-        [Dem_LeanCloudData addUserWithUser:self.model block:^(NSError *value) {
-            if ([value.userInfo[@"error"] isEqualToString:@"Username has already been taken"]) {
-                NSLog(@"此用户已存在");
-            }else{
-                NSLog(@"%@",value.userInfo[@"error"]);
-            }
-        }];
-    }];
+       
+       UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示信息" message:@"验证" preferredStyle:UIAlertControllerStyleAlert];
+       UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+              
+       }];
+       
+       [alert addAction:action];
+       
+       if ([self.userNameTextfield.text isEqualToString:@""] || [self.passWordTextField.text isEqualToString:@""] || [self.makeSurePassWordTextField.text isEqualToString:@""]) {
+              alert.message = @"信息填写不完整";
+              [self showDetailViewController:alert sender:nil];
+              return;
+       }
+       if ([self.passWordTextField.text isEqualToString:self.makeSurePassWordTextField.text] == NO) {
+              alert.message = @"前后密码不一致";
+              [self showDetailViewController:alert sender:nil];
+              return;
+       }
+       
+       // 验证 不区分大小写 字符比较
+       if ([self.codeView.code compare:self.identifyCodeTextField.text options:NSCaseInsensitiveSearch ]) {
+              
+              Dem_RongData *token = [[Dem_RongData alloc]init];
+              [token postRequestWithName:self.userNameTextfield.text block:^(NSString *token) {
+                     self.model = [[Dem_UserModel alloc]init];
+                     self.model.photo = self.photoView.image;
+                     self.model.username = self.userNameTextfield.text;
+                     self.model.password = self.passWordTextField.text;
+                     //        self.model.email = self.mailAddressTextField.text;
+                     self.model.token = token;
+                     [Dem_LeanCloudData addUserWithUser:self.model block:^(NSError *value) {
+                            if ([value.userInfo[@"error"] isEqualToString:@"Username has already been taken"]) {
+                                   NSLog(@"此用户已存在");
+                            }else{
+                                   NSLog(@"%@",value.userInfo[@"error"]);
+                            }
+                            alert.message = @"注册成功";
+                     }];
+              }];
+       }
+       else {
+              alert.message = @"验证码错误";
+       }
+       [self showDetailViewController:alert sender:nil];
+       
+       
 }
 
 #pragma mark image的点击事件
