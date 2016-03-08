@@ -11,7 +11,6 @@
 #import "SG_Model.h"
 @interface DataHandel ()
 
-@property (nonatomic, strong)NSMutableArray *DataArray;
 
 @end
 
@@ -27,6 +26,13 @@ static DataHandel *datahandel;
         _DataArray = [NSMutableArray array];
     }
     return _DataArray;
+}
+
+- (NSMutableArray *)infoDAtaArray{
+    if (_infoDAtaArray == nil) {
+        _infoDAtaArray = [NSMutableArray array];
+    }
+    return _infoDAtaArray;
 }
 
 +(instancetype)shareInstance{
@@ -58,12 +64,16 @@ static DataHandel *datahandel;
 
     
     [SG_NetTools SessionDataWith:url httpmethod:@"GET" httpbody:nil revokeBlock:^(NSData *data) {
-       
+        
+        [self.DataArray removeAllObjects];
+        [self.infoDAtaArray removeAllObjects];
+        
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
         
+        NSMutableDictionary *infodic = dic[@"info"];
+        [self.infoDAtaArray addObject:[infodic objectForKey:@"maxtime"]];
+
         NSMutableArray *array = dic[@"list"];
-    
-            [self.DataArray removeAllObjects];
         for (NSDictionary *dict in array) {
           
             SG_Model *model = [[SG_Model alloc] init];
@@ -81,6 +91,46 @@ static DataHandel *datahandel;
         
     }];
 }
+
+
+
+//根据网址请求数据
+- (void)requestUpDataWithUrl:(NSString *)url
+                         finshed:(void(^)())finsh{
+    
+    
+    
+    [SG_NetTools SessionDataWith:url httpmethod:@"GET" httpbody:nil revokeBlock:^(NSData *data) {
+        
+
+        
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+        
+        NSMutableDictionary *infodic = dic[@"info"];
+        [self.infoDAtaArray addObject:[infodic objectForKey:@"maxtime"]];
+        NSLog(@"maxtime ===  %@",self.infoDAtaArray);
+        
+        NSMutableArray *array = dic[@"list"];
+        
+        for (NSDictionary *dict in array) {
+            
+            SG_Model *model = [[SG_Model alloc] init];
+            
+            [model setValuesForKeysWithDictionary:dict];
+            
+            
+            [self.DataArray addObject:model];
+            
+        };
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            finsh();
+        });
+        
+    }];
+}
+
 
 
 //返回数组个数

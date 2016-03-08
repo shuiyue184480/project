@@ -19,6 +19,7 @@
 @property (nonatomic, strong)NSString *image0;
 @property (nonatomic, strong)NSString *width;
 @property (nonatomic, strong)NSString *height;
+@property (nonatomic, strong)NSString *maxtime;
 
 @property (nonatomic, strong)NSString *weixin_url;
 

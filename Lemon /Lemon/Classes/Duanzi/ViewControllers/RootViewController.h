@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #include "RootView.h"
 @interface RootViewController : UIViewController
+
 @property (nonatomic, strong)RootView *rv;
 @property (nonatomic, strong)UIRefreshControl *refresh;
 

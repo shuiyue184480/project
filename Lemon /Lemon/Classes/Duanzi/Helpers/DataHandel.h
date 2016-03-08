@@ -11,8 +11,8 @@
 @class SG_Model;
 @interface DataHandel : NSObject
 
-
-
+@property (nonatomic, strong)NSMutableArray *infoDAtaArray;
+@property (nonatomic, strong)NSMutableArray *DataArray;
 
 +(instancetype)shareInstance;
 
@@ -25,7 +25,9 @@
 - (void)requestDuanziDataWithUrl:(NSString *)url
                finshed:(void(^)())finsh;
 
-
+//下拉刷新数据
+- (void)requestUpDataWithUrl:(NSString *)url
+                     finshed:(void(^)())finsh;
 //返回数组个数
 - (NSInteger)countOfDataArray;
 

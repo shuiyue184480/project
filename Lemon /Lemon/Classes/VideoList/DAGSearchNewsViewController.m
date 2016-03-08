@@ -26,7 +26,7 @@
        searchNews.placeholder = @"请输入要搜索的信息";
        self.navigationItem.titleView = searchNews;
        
-       self.tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStylePlain];
+       self.tableView = [[UITableView alloc]initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStylePlain];
        [self.view addSubview:self.tableView];
        
        self.tableView.dataSource = self;

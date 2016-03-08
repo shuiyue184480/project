@@ -16,6 +16,8 @@
 #import "UIImageView+WebCache.h"
 #import "CommentViewController.h"
 #import "LoginViewController.h"
+#import "PostViewController.h"
+#import "SearchViewController.h"
 @interface RootViewController ()<UITableViewDataSource ,UITableViewDelegate>
 
 @end
@@ -36,14 +38,21 @@
     self.rv.table.dataSource = self;
     self.rv.table.separatorColor = [UIColor grayColor];
     self.rv.table.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.rv.table addHeaderWithTarget:self action:@selector(headerRereshing)];
+    [self.rv.table addFooterWithTarget:self action:@selector(footerRefreshing)];
+    [self.rv.table addHeaderWithTarget:self action:@selector(headerRefreshing)];
+    
+    
     UIBarButtonItem *rigthItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAction:)];
     self.navigationItem.rightBarButtonItem = rigthItem;
     
     
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchAction:)];
+    self.navigationItem.leftBarButtonItem = leftItem;
+    
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commentAction:) name:@"comment" object:nil];
     
-    
+    self.rv.segement.selectedSegmentIndex = 1;
     [self.rv.segement addTarget:self action:@selector(segementAction:) forControlEvents:UIControlEventValueChanged];
     
     //设置自动调整scrollView边距为NO 使其不调整
@@ -54,21 +63,27 @@
     [self.rv.table registerNib:[UINib nibWithNibName:@"PicTableViewCell" bundle:nil] forCellReuseIdentifier:@"PicCell"];
     
     [[DataHandel shareInstance] requestDuanziDataWithUrl:PicURL finshed:^{
-        
        [self.rv.table reloadData];
     }];
 }
 
-
-
 - (void) addAction:(UIBarButtonItem *)sender{
+    
+    PostViewController *post = [[PostViewController alloc] init];
+    
+    [self.navigationController pushViewController:post animated:YES];
     
     NSLog(@"发帖");
     
     
     
+ 
 }
-
+- (void) searchAction:(UIBarButtonItem *)sender{
+    SearchViewController *serach = [[SearchViewController alloc] init];
+    [self presentViewController:serach animated:YES completion:nil];
+    
+}
 - (void)commentAction:(NSNotification *)sender{
     
     
@@ -86,24 +101,72 @@
 
 }
 
-- (void)headerRereshing{
-  
-//    [[DataHandel shareInstance] requestDuanziDataWithUrl:DuziUrl finshed:^{
-//        
-//        [self.rv.table reloadData];
-//        
-//    }];
+- (void)headerRefreshing{
     
-   [self performSelector:@selector(refresh123) withObject:nil afterDelay:1.5];
+    [self performSelector:@selector(refreshheader) withObject:nil afterDelay:1];
     
+}
+- (void)refreshheader{
+    switch (self.rv.segement.selectedSegmentIndex) {
+        case 0:{[[DataHandel shareInstance]requestDuanziDataWithUrl:DuziUrl finshed:^{
+            [self.rv.table reloadData];
+        }]; }break;
+        
+        case 1:{[[DataHandel shareInstance]requestDuanziDataWithUrl:PicURL finshed:^{
+            [self.rv.table reloadData];
+        }]; }break;
+            
+        case 2:{}break;
+            
+        case 3:{}break;
+            
+        default:
+            break;
+    }
+    
+       [self.rv.table headerEndRefreshing];
+}
+
+- (void)footerRefreshing{
+ //   [self performSelector:@selector(refresh123) withObject:nil afterDelay:1.5];
 }
 
 - (void)refresh123{
+    NSString *newUrl = nil;
     
-    [self.rv.table headerEndRefreshing];
-     
+    switch (self.rv.segement.selectedSegmentIndex) {
+            
+      
+            
+        case 0:{ NSString *string = [[DataHandel shareInstance].infoDAtaArray lastObject];
+            
+            NSString *str1 = [NSString stringWithFormat:@"ios%20%E8%AE%BE%E5%A4%87&from="];
+            newUrl = [NSString stringWithFormat:@"http://api.budejie.com/api/api_open.php?a=list&appname=baisishequ&asid=79C90406-DB8A-4758-9466-DEDB502C2A14&c=data&client=iphone&device=%@ios&jbk=0&mac=&maxtime=%@&market=&openudid=3739a3941c7bb4f82c78c8c53228edcb4a14f0d0&page=0&per=20&sub_flag=1&type=29&udid=&ver=3.6",str1,string];}
+            
+            break;
+            
+        case 1:{ NSString *string = [[DataHandel shareInstance].infoDAtaArray lastObject];
+            
+            NSString *str1 = [NSString stringWithFormat:@"ios%20%E8%AE%BE%E5%A4%87&from="];
+            newUrl = [NSString stringWithFormat:@"http://api.budejie.com/api/api_open.php?a=list&appname=baisishequ&asid=79C90406-DB8A-4758-9466-DEDB502C2A14&c=data&client=iphone&device=%@ios&jbk=0&mac=&maxtime=%@&market=&openudid=3739a3941c7bb4f82c78c8c53228edcb4a14f0d0&page=0&per=20&sub_flag=1&type=10&udid=&ver=3.6",str1,string];}
+            
+            break;
+        case 2:
+            
+            break;
+            
+        default:
+            break;
+    }
+    NSLog(@"neeURL== %@",newUrl);
+    [[DataHandel shareInstance] requestUpDataWithUrl:newUrl finshed:^{
+        
+        [self.rv.table reloadData];
+    }];
+    
+    
+    [self.rv.table footerEndRefreshing];
 }
-
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -111,7 +174,6 @@
     return [DataHandel shareInstance].countOfDataArray;
     
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
@@ -147,7 +209,6 @@
 
 }
 
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
       SG_Model *model = [[DataHandel shareInstance]modelAtIndexPath:indexPath];
@@ -170,8 +231,6 @@
 
     
 }
-
-
 
 - (void)segementAction:(UISegmentedControl *)sender{
     
@@ -206,18 +265,56 @@
 
 
 
-
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     
-
+    if (indexPath.row == [[DataHandel shareInstance] countOfDataArray] - 1) {
+        
+        NSString *newUrl = nil;
+        
+        switch (self.rv.segement.selectedSegmentIndex) {
+                
+                
+                
+            case 0:{
+                
+                NSString *string = [[DataHandel shareInstance].infoDAtaArray lastObject];
+                
+                NSString *str1 = [NSString stringWithFormat:@"ios%20%E8%AE%BE%E5%A4%87&from="];
+                newUrl = [NSString stringWithFormat:@"http://api.budejie.com/api/api_open.php?a=list&appname=baisishequ&asid=79C90406-DB8A-4758-9466-DEDB502C2A14&c=data&client=iphone&device=%@ios&jbk=0&mac=&maxtime=%@&market=&openudid=3739a3941c7bb4f82c78c8c53228edcb4a14f0d0&page=0&per=20&sub_flag=1&type=29&udid=&ver=3.6",str1,string];}
+                
+                break;
+                
+            case 1:{
+               
+                 NSString *string = [[DataHandel shareInstance].infoDAtaArray lastObject];
+                
+                NSString *str1 = [NSString stringWithFormat:@"ios%20%E8%AE%BE%E5%A4%87&from="];
+                newUrl = [NSString stringWithFormat:@"http://api.budejie.com/api/api_open.php?a=list&appname=baisishequ&asid=79C90406-DB8A-4758-9466-DEDB502C2A14&c=data&client=iphone&device=%@ios&jbk=0&mac=&maxtime=%@&market=&openudid=3739a3941c7bb4f82c78c8c53228edcb4a14f0d0&page=0&per=20&sub_flag=1&type=10&udid=&ver=3.6",str1,string];}
+                
+                break;
+            case 2:
+                
+                break;
+                
+            default:
+                break;
+        }
+        
+        
+        [[DataHandel shareInstance] requestUpDataWithUrl:newUrl finshed:^{
+            
+            [self.rv.table reloadData];
+        }];
+        
+        
+    }
+    
+    
+    
     
     
     
 }
-
-
-
 
 
 - (void)didReceiveMemoryWarning {

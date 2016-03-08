@@ -25,11 +25,11 @@
 #define kJokeUrl @"http://japi.juhe.cn/joke/content/text.from?page=%ld&pagesize=20&key=f33173f37b13d9b9227577e7d8e87433"
 
 //段子精华
-#define DuziUrl @"http://api.budejie.com/api/api_open.php?a=list&appname=baisishequ&asid=79C90406-DB8A-4758-9466-DEDB502C2A14&c=data&client=iphone&device=ios%20%E8%AE%BE%E5%A4%87&from=ios&jbk=0&mac=&market=&openudid=3739a3941c7bb4f82c78c8c53228edcb4a14f0d0&page=0&per=100&sub_flag=1&type=29&udid=&ver=3.6"
+#define DuziUrl @"http://api.budejie.com/api/api_open.php?a=newlist&appname=baisishequ&asid=79C90406-DB8A-4758-9466-DEDB502C2A14&c=data&client=iphone&device=ios%20%E8%AE%BE%E5%A4%87&from=ios&jbk=0&mac=&market=&openudid=3739a3941c7bb4f82c78c8c53228edcb4a14f0d0&page=0&per=20&sub_flag=1&type=29&udid=&ver=3.6"
 
 
 //最新图片
-#define PicURL @"http://api.budejie.com/api/api_open.php?a=newlist&appname=baisishequ&asid=79C90406-DB8A-4758-9466-DEDB502C2A14&c=data&client=iphone&device=ios%20%E8%AE%BE%E5%A4%87&from=ios&jbk=0&mac=&market=&openudid=3739a3941c7bb4f82c78c8c53228edcb4a14f0d0&page=0&per=100&sub_flag=1&type=10&udid=&ver=3.6"
+#define PicURL @"http://api.budejie.com/api/api_open.php?a=newlist&appname=baisishequ&asid=79C90406-DB8A-4758-9466-DEDB502C2A14&c=data&client=iphone&device=ios%20%E8%AE%BE%E5%A4%87&from=ios&jbk=0&mac=&market=&openudid=3739a3941c7bb4f82c78c8c53228edcb4a14f0d0&page=0&per=20&sub_flag=1&type=10&udid=&ver=3.6"
 
 //融云AppKey
 #define RongAppKey @"8w7jv4qb7uemy"
