@@ -229,6 +229,7 @@
 		C2B4E12B1C8ECB8400047D46 /* UITableViewCell+NightVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B4E1101C8ECB8400047D46 /* UITableViewCell+NightVersion.m */; };
 		C2B4E12C1C8ECB8400047D46 /* UIView+BackgroundColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B4E1131C8ECB8400047D46 /* UIView+BackgroundColor.m */; };
 		C2B4E12D1C8ECB8400047D46 /* UIView+NightVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B4E1151C8ECB8400047D46 /* UIView+NightVersion.m */; };
+		C2B4E1301C8EF42E00047D46 /* DAGRegardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B4E12F1C8EF42E00047D46 /* DAGRegardingViewController.m */; };
 		C2CF9E5B1C846B7000031C10 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CF9E5A1C846B7000031C10 /* main.m */; };
 		C2CF9E641C846B7000031C10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2CF9E621C846B7000031C10 /* Main.storyboard */; };
 		C2CF9E661C846B7000031C10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2CF9E651C846B7000031C10 /* Assets.xcassets */; };
@@ -603,6 +604,8 @@
 		C2B4E1131C8ECB8400047D46 /* UIView+BackgroundColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BackgroundColor.m"; sourceTree = "<group>"; };
 		C2B4E1141C8ECB8400047D46 /* UIView+NightVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+NightVersion.h"; sourceTree = "<group>"; };
 		C2B4E1151C8ECB8400047D46 /* UIView+NightVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+NightVersion.m"; sourceTree = "<group>"; };
+		C2B4E12E1C8EF42E00047D46 /* DAGRegardingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGRegardingViewController.h; sourceTree = "<group>"; };
+		C2B4E12F1C8EF42E00047D46 /* DAGRegardingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGRegardingViewController.m; sourceTree = "<group>"; };
 		C2CF9E561C846B6F00031C10 /* Lemon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lemon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2CF9E5A1C846B7000031C10 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C2CF9E631C846B7000031C10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -1401,6 +1404,8 @@
 				C2CF9F0E1C84749600031C10 /* icon_sponsor_blue.png */,
 				C215A6571C85CF5D00C5487A /* UserViewController.h */,
 				C215A6581C85CF5D00C5487A /* UserViewController.m */,
+				C2B4E12E1C8EF42E00047D46 /* DAGRegardingViewController.h */,
+				C2B4E12F1C8EF42E00047D46 /* DAGRegardingViewController.m */,
 			);
 			path = UserInstance;
 			sourceTree = "<group>";
@@ -1957,6 +1962,7 @@
 				C2AFDAA41C89AB6E00D64594 /* MultipartMessageHeader.m in Sources */,
 				C2B4E1221C8ECB8400047D46 /* UINavigationBar+TintColor.m in Sources */,
 				C2B138201C8580CF00A4DC88 /* DAGNewsListViewController.m in Sources */,
+				C2B4E1301C8EF42E00047D46 /* DAGRegardingViewController.m in Sources */,
 				C2AFDAB41C89AB6E00D64594 /* DDTTYLogger.m in Sources */,
 				C2B4E1181C8ECB8400047D46 /* DKNightVersionUtility.m in Sources */,
 				C2CF9EF81C84707C00031C10 /* UIImageView+WebCache.m in Sources */,

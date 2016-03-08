@@ -9,6 +9,8 @@
 #ifndef SysPCH_pch
 #define SysPCH_pch
 
+#define kScreenWidth  CGRectGetWidth([UIScreen mainScreen].bounds)
+
 //Token调试
 #define Token123 @"iMN51cAmZ2PuuEk+kW3Wsvt8+g/DMJbkE8zXlPf5RYqjCTwU4SNif/MLh7X20Owwwtwt4s/sf4nwEjN9ujzn7Q=="
 

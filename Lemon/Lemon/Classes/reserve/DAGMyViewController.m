@@ -9,6 +9,8 @@
 #import "DAGMyViewController.h"
 #import <AVOSCloud/AVOSCloud.h>
 #import "DAGDownLoadViewController.h"
+#import "DKNightVersion.h"
+
 
 @interface DAGMyViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -23,6 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
        
+       self.navigationItem.title = @"设置";
+       
        self.tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStylePlain];
        [self.view addSubview:self.tableView];
        
@@ -30,33 +34,75 @@
        self.tableView.delegate = self;
        [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"MyCell"];
        
-       
+       [DKNightVersionManager setUseDefaultNightColor:YES];
        
     // Do any additional setup after loading the view.
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+       switch (section) {
+              case 0:
+                     return 2;
+                     break;
+               case 1:
+                     return 1;
+                     break;
+              default:
+                     break;
+       }
+       return 0;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
        return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath  {
        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyCell" forIndexPath:indexPath];
-       if (indexPath.row == 0) {
-              cell.textLabel.text = @"我的下载";
+       cell.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.000];
+       if (indexPath.section == 0) {
               
-       }else {
-       cell.textLabel.text = @"清除缓存";
+              if (indexPath.row == 0) {
+                     cell.textLabel.text = @"我的下载";
+                     
+              }else {
+                     cell.textLabel.text = @"清除缓存";
+              }
+       } else {
+              cell.textLabel.text = @"夜间模式";
+              UISwitch *switchBtn= [[UISwitch alloc] initWithFrame:CGRectMake(kScreenWidth - 90, 5, 60, 34)];
+              switchBtn.layer.masksToBounds = YES;
+              switchBtn.layer.cornerRadius = 17;
+              
+              switchBtn.on = NO;
+              
+              [switchBtn addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
+              
+              [cell.contentView addSubview:switchBtn];
        }
+       
        return cell;
 }
 
+- (void)switchAction:(UISwitch *)sender {
+       
+       if (sender.on == YES) {
+              [DKNightVersionManager nightFalling];
+              sender.onTintColor = [UIColor cyanColor];
+       } else {
+              [DKNightVersionManager dawnComing];
+       }
+       
+       
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-       if (indexPath.row == 0) {
+       
+       if (indexPath.section == 0 && indexPath.row == 0) {
               DAGDownLoadViewController *ddlc = [[DAGDownLoadViewController alloc] init];
               [self.navigationController pushViewController:ddlc animated:YES];
        }
-       AVUser *user = [AVUser currentUser];
        
 }
 
