@@ -34,10 +34,11 @@
                                           @(ConversationType_GROUP)]];
     UIBarButtonItem *left = [[UIBarButtonItem alloc]initWithTitle:@"好友列表" style:UIBarButtonItemStyleDone target:self action:@selector(leftAction)];
     self.navigationItem.leftBarButtonItem = left;
+
        
        [[RCIM sharedRCIM] setUserInfoDataSource:self];
        [[RCIM sharedRCIM] setReceiveMessageDelegate:self];
-       
+
     // Do any additional setup after loading the view.
 }
 
@@ -61,13 +62,18 @@
     
 }
 
-- (void)onRCIMReceiveMessage:(RCMessage *)message left:(int)left {
-       NSLog(@"shoudao");
-}
+
+
 
 - (void)getUserInfoWithUserId:(NSString *)userId completion:(void (^)(RCUserInfo *))completion {
        NSLog(@"fdsa");
 }
+
+- (void)onRCIMReceiveMessage:(RCMessage *)message left:(int)left{
+    NSLog(@"%@",message.content);
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
