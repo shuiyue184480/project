@@ -8,8 +8,8 @@
 
 #import "UserViewController.h"
 #import "Dem_UserData.h"
-
-
+#import <AVOSCloud/AVOSCloud.h>
+#import "DHSlideMenuController.h"
 @interface UserViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *photo;
 @property (weak, nonatomic) IBOutlet UILabel *name;
@@ -25,8 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.array = [NSMutableArray array];
-    NSArray *arr1 = @[@"修改信息"];
-    NSArray *arr2 = @[@"退出"];
+    NSArray *arr1 = @[@"修改信息",@"关于我们"];
+    NSArray *arr2 = @[@"更换用户",@"注销"];
     [self.array addObject:arr1];
     [self.array addObject:arr2];
     self.table.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -43,31 +43,41 @@
     self.photo.image = [Dem_UserData shareInstance].model.photo;
     self.name.text = [Dem_UserData shareInstance].model.username;
 }
-
+#pragma mark row的个数
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [self.array[section] count];
 }
-
+#pragma mark section 的个数
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return self.array.count;
 }
-
+#pragma mark cell的设置
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"user_cell" forIndexPath:indexPath];
     cell.textLabel.text = self.array[indexPath.section][indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
-
+#pragma mark cell的点击事件
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             NSLog(@"xiugai");
         }
+        else if (indexPath.row == 1){
+            NSLog(@"关于我们");
+        }
     }
     else if(indexPath.section == 1){
+        
         if (indexPath.row == 0) {
+            NSLog(@"更换用户");
+        }
+        else if (indexPath.row == 1){
             NSLog(@"zhuxiao");
+            [[Dem_UserData shareInstance]logoutUser];
+            [Dem_UserData shareInstance].reLoad = YES;
+            
         }
     }
 }

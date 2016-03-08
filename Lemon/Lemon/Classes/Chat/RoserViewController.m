@@ -138,7 +138,6 @@
                 for (int i = 0; i < group.count; i++) {
                     AVObject *buddy = group[i];
                     AVUser *friend = [buddy objectForKey:@"friend"];
-                    NSLog(@"%@",friend);
                     [Dem_LeanCloudData intermationWithUser:friend block:^(AVObject *users) {
                         self.inter = [[AVObject alloc]init];
                         self.inter = users;

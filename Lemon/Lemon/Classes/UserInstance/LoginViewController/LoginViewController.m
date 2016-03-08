@@ -11,6 +11,7 @@
 #import "DHSlideMenuController.h"
 #import "Dem_UserData.h"
 #import <RongIMKit/RongIMKit.h>
+#import <AVOSCloud/AVOSCloud.h>
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;
@@ -42,6 +43,7 @@
                [[Dem_UserData shareInstance]loginWithUser:user];
                [Dem_UserData shareInstance].isLog = YES;
             [self dismissViewControllerAnimated:YES completion:^{
+                [AVUser changeCurrentUser:user save:YES];
             }];
         }
     } error:^(NSError *err) {
