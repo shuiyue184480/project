@@ -31,7 +31,7 @@
     [request setValue:appkey forHTTPHeaderField:@"App-Key"];
     [request setValue:nonce forHTTPHeaderField:@"Nonce"];
     [request setValue:timestamp forHTTPHeaderField:@"Timestamp"];
-    [request setValue:@"JVcagbFu70" forHTTPHeaderField:@"appSecret"];
+    [request setValue:@"npmSTRJIEYhgKK" forHTTPHeaderField:@"appSecret"];
     //生成hashcode 用以验证签名
     [request setValue:[self sha1:[NSString stringWithFormat:@"%@%@%@",appkey,nonce,timestamp]] forHTTPHeaderField:@"Signature"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
