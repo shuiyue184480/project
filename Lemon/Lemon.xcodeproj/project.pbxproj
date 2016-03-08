@@ -204,6 +204,7 @@
 		C2B138311C85C16300A4DC88 /* NewsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2B1382F1C85C16300A4DC88 /* NewsListTableViewCell.xib */; };
 		C2B138331C85CA9900A4DC88 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B138321C85CA9900A4DC88 /* placeholder.png */; };
 		C2B138361C85DA8A00A4DC88 /* DAGNewsDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B138351C85DA8A00A4DC88 /* DAGNewsDetail.m */; };
+		C2B4E0D61C8EA20600047D46 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B4E0D51C8EA20600047D46 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C2CF9E5B1C846B7000031C10 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CF9E5A1C846B7000031C10 /* main.m */; };
 		C2CF9E641C846B7000031C10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2CF9E621C846B7000031C10 /* Main.storyboard */; };
 		C2CF9E661C846B7000031C10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2CF9E651C846B7000031C10 /* Assets.xcassets */; };
@@ -527,6 +528,8 @@
 		C2B138321C85CA9900A4DC88 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		C2B138341C85DA8A00A4DC88 /* DAGNewsDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGNewsDetail.h; sourceTree = "<group>"; };
 		C2B138351C85DA8A00A4DC88 /* DAGNewsDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGNewsDetail.m; sourceTree = "<group>"; };
+		C2B4E0D41C8EA20600047D46 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		C2B4E0D51C8EA20600047D46 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		C2CF9E561C846B6F00031C10 /* Lemon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lemon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2CF9E5A1C846B7000031C10 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C2CF9E631C846B7000031C10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -986,6 +989,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		C2B4E0D31C8EA20600047D46 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				C2B4E0D41C8EA20600047D46 /* MBProgressHUD.h */,
+				C2B4E0D51C8EA20600047D46 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		C2CF9E4D1C846B6F00031C10 = {
 			isa = PBXGroup;
 			children = (
@@ -1113,6 +1125,7 @@
 		C2CF9E7D1C846F5800031C10 /* ThirdParties */ = {
 			isa = PBXGroup;
 			children = (
+				C2B4E0D31C8EA20600047D46 /* MBProgressHUD */,
 				C2AFDA5A1C89AB6E00D64594 /* HTTP */,
 				C2CF9F051C84730E00031C10 /* Reachability */,
 				C2CF9EB11C84707C00031C10 /* MJRefresh */,
@@ -1624,6 +1637,7 @@
 				C2AFDAA51C89AB6E00D64594 /* MultipartMessageHeaderField.m in Sources */,
 				C2CF9EE81C84707C00031C10 /* MJRefreshFooterView.m in Sources */,
 				C2DAC44F1C88695E00FE961A /* SG_NetTools.m in Sources */,
+				C2B4E0D61C8EA20600047D46 /* MBProgressHUD.m in Sources */,
 				C20940D21C869CCD0049AC25 /* Dem_LeanCloudData.m in Sources */,
 				C215A6501C859FF500C5487A /* DHSlideMenuController.m in Sources */,
 				C23F74051C869BEF00C1475E /* enjoyViewController.m in Sources */,

@@ -66,7 +66,9 @@
 
 
 - (void)getUserInfoWithUserId:(NSString *)userId completion:(void (^)(RCUserInfo *))completion {
-       NSLog(@"fdsa");
+   RCUserInfo *user = [[RCUserInfo alloc]init];
+   user.userId = userId;
+   return completion(user);
 }
 
 - (void)onRCIMReceiveMessage:(RCMessage *)message left:(int)left{
