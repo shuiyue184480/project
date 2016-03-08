@@ -11,6 +11,7 @@
 #import "Dem_GroupViewController.h"
 #import <RongIMLib/RongIMLib.h>
 #import <RongIMKit/RongIMKit.h>
+#import <AVOSCloudIM/AVOSCloudIM.h>
 
 @interface Dem_BuddyViewController ()
 
