@@ -11,7 +11,7 @@
 #import <RongIMKit/RongIMKit.h>
 
 
-@interface Dem_TestChatListViewController ()<RCIMReceiveMessageDelegate, RCIMUserInfoDataSource>
+@interface Dem_TestChatListViewController ()<RCIMReceiveMessageDelegate>
 
 @end
 
@@ -36,7 +36,7 @@
     self.navigationItem.leftBarButtonItem = left;
 
        
-       [[RCIM sharedRCIM] setUserInfoDataSource:self];
+//       [[RCIM sharedRCIM] setUserInfoDataSource:self];
        [[RCIM sharedRCIM] setReceiveMessageDelegate:self];
 
     // Do any additional setup after loading the view.
@@ -64,12 +64,12 @@
 
 
 
-
-- (void)getUserInfoWithUserId:(NSString *)userId completion:(void (^)(RCUserInfo *))completion {
-   RCUserInfo *user = [[RCUserInfo alloc]init];
-   user.userId = userId;
-   return completion(user);
-}
+//
+//- (void)getUserInfoWithUserId:(NSString *)userId completion:(void (^)(RCUserInfo *))completion {
+//   RCUserInfo *user = [[RCUserInfo alloc]init];
+//   user.userId = userId;
+//   return completion(user);
+//}
 
 - (void)onRCIMReceiveMessage:(RCMessage *)message left:(int)left{
     NSLog(@"%@",message.content);

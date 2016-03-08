@@ -15,12 +15,14 @@
 #import "DAGNewsDeatilViewController.h"
 #import "DAGSearchNewsViewController.h"
 #import "Reachability.h"
+#import "MBProgressHUD.h"
 @interface DAGNewsListViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong)NSMutableArray *NewsListArray; // 标题数组
 
 @property (nonatomic, strong)NSMutableArray *DetailArray; // 详情数组
 
+@property (nonatomic, strong)MBProgressHUD *hud;
 
 @end
 
@@ -32,6 +34,11 @@
        self.view = self.dlv;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+       [self loadData];
+       [_hud removeFromSuperview];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
        
@@ -40,31 +47,48 @@
        
        self.dlv.table.dataSource = self;
        self.dlv.table.delegate = self;
-[[DAG_NewsListManager shareInstance] requestWithUrl:kHotUrl finish:^{
-       self.NewsListArray = [NSMutableArray array];
 
-       self.NewsListArray = [DAG_NewsListManager shareInstance].NewsTitleArray;
-       
-      
-       
-       [self.dlv.table registerNib:[UINib nibWithNibName:@"NewsListTableViewCell" bundle:nil] forCellReuseIdentifier:@"NewsListCell"];
-       self.DetailArray = [NSMutableArray array];
-       for (int i = 0; i < self.NewsListArray.count; i++) {
-              
-              DAGNewsLiatModel *m = self.NewsListArray[i];
-              NSString *title = m.title;
-              NSString *encode = [title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-              NSString *detailUrl = [NSString stringWithFormat:kDetailUrl, encode];
-              [[DAG_NewsListManager shareInstance] requestWithDetailUrl:detailUrl finish:^{
-                     self.DetailArray = [DAG_NewsListManager shareInstance].NewsDetailArray;
-                     
-                     [self.dlv.table reloadData];
-              }];
-       }
-       
-}];
+       [self p_setupProgressHud];
        
     // Do any additional setup after loading the view.
+}
+
+// 小菊花.
+- (void)p_setupProgressHud
+{
+       self.hud = [[MBProgressHUD alloc] initWithView:self.view];
+       _hud.frame = self.view.bounds;
+       _hud.minSize = CGSizeMake(100, 100);
+       _hud.mode = MBProgressHUDModeIndeterminate;
+       [self.view addSubview:_hud];
+       
+       [_hud show:YES];
+}
+
+- (void)loadData {
+       [[DAG_NewsListManager shareInstance] requestWithUrl:kHotUrl finish:^{
+              self.NewsListArray = [NSMutableArray array];
+              
+              self.NewsListArray = [DAG_NewsListManager shareInstance].NewsTitleArray;
+              
+              
+              
+              [self.dlv.table registerNib:[UINib nibWithNibName:@"NewsListTableViewCell" bundle:nil] forCellReuseIdentifier:@"NewsListCell"];
+              self.DetailArray = [NSMutableArray array];
+              for (int i = 0; i < self.NewsListArray.count; i++) {
+                     
+                     DAGNewsLiatModel *m = self.NewsListArray[i];
+                     NSString *title = m.title;
+                     NSString *encode = [title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                     NSString *detailUrl = [NSString stringWithFormat:kDetailUrl, encode];
+                     [[DAG_NewsListManager shareInstance] requestWithDetailUrl:detailUrl finish:^{
+                            self.DetailArray = [DAG_NewsListManager shareInstance].NewsDetailArray;
+                            
+                            [self.dlv.table reloadData];
+                     }];
+              }
+              
+       }];
 }
 
 

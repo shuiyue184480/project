@@ -20,28 +20,7 @@
 //       NSLog(@"%@",[ud valueForKey:@"NetWorkStatus"]);
        //创建UIActivityIndicatorView背底半透明View
        
-       static BOOL isloading = NO;
-       
-       if (isloading == NO) {
-              
-       
-       UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-       [view setTag:108];
-       [view setBackgroundColor:[UIColor blackColor]];
-       [view setAlpha:0.5];
-     UIViewController *vc = [UIApplication sharedApplication].windows[1].rootViewController;
-       [vc.view addSubview:view];
-       //
-       UIActivityIndicatorView *act = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
-       //    [act setCenter:CGPointMake(10, 200)];
-       [act setCenter:view.center];//设置旋转菊花的中心位置
-       [act setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];//设置菊花的样式
-       [view addSubview: act];
-       
-       [act startAnimating];
-              isloading = YES;
-       }
-       if ([[ud valueForKey:@"NetWorkStatus"] isEqualToString:@"NotReachable"]) {
+              if ([[ud valueForKey:@"NetWorkStatus"] isEqualToString:@"NotReachable"]) {
               UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"检测到您当前没有可用网络,请检查网络连接" preferredStyle:UIAlertControllerStyleAlert];
               UIAlertAction *action = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                      
