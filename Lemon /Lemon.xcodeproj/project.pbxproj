@@ -195,6 +195,8 @@
 		C2AFDABA1C89BD8600D64594 /* DAGRequestData.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AFDAB91C89BD8600D64594 /* DAGRequestData.m */; };
 		C2AFE2B11C8D5B0900E9B174 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AFE2AF1C8D5B0900E9B174 /* CommentViewController.m */; };
 		C2AFE2B21C8D5B0900E9B174 /* CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2AFE2B01C8D5B0900E9B174 /* CommentViewController.xib */; };
+		C2AFE2B61C8D97B000E9B174 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AFE2B41C8D97B000E9B174 /* PostViewController.m */; };
+		C2AFE2B71C8D97B000E9B174 /* PostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2AFE2B51C8D97B000E9B174 /* PostViewController.xib */; };
 		C2B138201C8580CF00A4DC88 /* DAGNewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B1381F1C8580CF00A4DC88 /* DAGNewsListViewController.m */; };
 		C2B138231C85811800A4DC88 /* DAGNewsListView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B138221C85811800A4DC88 /* DAGNewsListView.m */; };
 		C2B138261C85825C00A4DC88 /* DAGNewsLiatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B138251C85825C00A4DC88 /* DAGNewsLiatModel.m */; };
@@ -249,6 +251,8 @@
 		C2E7E7C51C8544C0000E94C5 /* iconfont-comments.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E7E7C41C8544C0000E94C5 /* iconfont-comments.png */; };
 		C2E7E7C71C857A57000E94C5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2E7E7C61C857A57000E94C5 /* Images.xcassets */; };
 		C2E7E7CD1C85BFF8000E94C5 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E7E7CC1C85BFF8000E94C5 /* RootViewController.m */; };
+		C2F0567B1C8EB3B400918256 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F056791C8EB3B400918256 /* SearchViewController.m */; };
+		C2F0567C1C8EB3B400918256 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2F0567A1C8EB3B400918256 /* SearchViewController.xib */; };
 		FB934B9229C3398109C09466 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07F427A90B2FA9BEBB7AAB3B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -510,6 +514,9 @@
 		C2AFE2AE1C8D5B0900E9B174 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
 		C2AFE2AF1C8D5B0900E9B174 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
 		C2AFE2B01C8D5B0900E9B174 /* CommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentViewController.xib; sourceTree = "<group>"; };
+		C2AFE2B31C8D97B000E9B174 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
+		C2AFE2B41C8D97B000E9B174 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
+		C2AFE2B51C8D97B000E9B174 /* PostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostViewController.xib; sourceTree = "<group>"; };
 		C2B1381E1C8580CF00A4DC88 /* DAGNewsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGNewsListViewController.h; sourceTree = "<group>"; };
 		C2B1381F1C8580CF00A4DC88 /* DAGNewsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGNewsListViewController.m; sourceTree = "<group>"; };
 		C2B138211C85811800A4DC88 /* DAGNewsListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGNewsListView.h; sourceTree = "<group>"; };
@@ -607,6 +614,9 @@
 		C2E7E7C61C857A57000E94C5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C2E7E7CB1C85BFF8000E94C5 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		C2E7E7CC1C85BFF8000E94C5 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		C2F056781C8EB3B300918256 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		C2F056791C8EB3B400918256 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		C2F0567A1C8EB3B400918256 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1321,9 +1331,15 @@
 			children = (
 				C2E7E7CB1C85BFF8000E94C5 /* RootViewController.h */,
 				C2E7E7CC1C85BFF8000E94C5 /* RootViewController.m */,
+				C2AFE2B31C8D97B000E9B174 /* PostViewController.h */,
+				C2AFE2B41C8D97B000E9B174 /* PostViewController.m */,
+				C2AFE2B51C8D97B000E9B174 /* PostViewController.xib */,
 				C2AFE2AE1C8D5B0900E9B174 /* CommentViewController.h */,
 				C2AFE2AF1C8D5B0900E9B174 /* CommentViewController.m */,
 				C2AFE2B01C8D5B0900E9B174 /* CommentViewController.xib */,
+				C2F056781C8EB3B300918256 /* SearchViewController.h */,
+				C2F056791C8EB3B400918256 /* SearchViewController.m */,
+				C2F0567A1C8EB3B400918256 /* SearchViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1479,6 +1495,7 @@
 				C2CF9F111C84752600031C10 /* IMG_0011.jpg in Resources */,
 				C215A6291C8592FA00C5487A /* 63-runner.png in Resources */,
 				C215A6281C8592FA00C5487A /* 62-contrast.png in Resources */,
+				C2AFE2B71C8D97B000E9B174 /* PostViewController.xib in Resources */,
 				C215A5F51C8592FA00C5487A /* 110-bug.png in Resources */,
 				C215A6011C8592FA00C5487A /* 23-bird.png in Resources */,
 				C215A5F21C8592FA00C5487A /* 108-badge.png in Resources */,
@@ -1505,6 +1522,7 @@
 				C215A6301C8592FA00C5487A /* 70-tv.png in Resources */,
 				C215A6031C8592FA00C5487A /* 25-weather.png in Resources */,
 				C215A5EC1C8592FA00C5487A /* 102-walk.png in Resources */,
+				C2F0567C1C8EB3B400918256 /* SearchViewController.xib in Resources */,
 				C2CF9E641C846B7000031C10 /* Main.storyboard in Resources */,
 				C215A5E41C8592FA00C5487A /* 05-shuffle.png in Resources */,
 				C215A62D1C8592FA00C5487A /* 67-tshirt.png in Resources */,
@@ -1612,6 +1630,7 @@
 				C2DAC4451C8821E400FE961A /* SG_Model.m in Sources */,
 				C2CF9E841C846FFB00031C10 /* AppDelegate.m in Sources */,
 				C215A56D1C852D9100C5487A /* RoserViewController.m in Sources */,
+				C2AFE2B61C8D97B000E9B174 /* PostViewController.m in Sources */,
 				C23F74011C86921E00C1475E /* RegisterViewController.m in Sources */,
 				C2CF9EEC1C84707C00031C10 /* SDImageCache.m in Sources */,
 				C2CF9EF31C84707C00031C10 /* UIButton+WebCache.m in Sources */,
@@ -1680,6 +1699,7 @@
 				C2CF9EE71C84707C00031C10 /* MJRefreshConst.m in Sources */,
 				C2AFDAB31C89AB6E00D64594 /* DDLog.m in Sources */,
 				C2DAC44C1C88288200FE961A /* DataHandel.m in Sources */,
+				C2F0567B1C8EB3B400918256 /* SearchViewController.m in Sources */,
 				C2AFDAAB1C89AB6E00D64594 /* HTTPRedirectResponse.m in Sources */,
 				C2AFDAA91C89AB6E00D64594 /* HTTPErrorResponse.m in Sources */,
 				C2AFDAA41C89AB6E00D64594 /* MultipartMessageHeader.m in Sources */,

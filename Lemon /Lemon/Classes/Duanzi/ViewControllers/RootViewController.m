@@ -103,7 +103,7 @@
 
 - (void)headerRefreshing{
     
-    [self performSelector:@selector(refreshheader) withObject:nil afterDelay:1];
+    [self performSelector:@selector(refreshheader) withObject:nil afterDelay:1.5];
     
 }
 - (void)refreshheader{
@@ -128,6 +128,7 @@
 }
 
 - (void)footerRefreshing{
+    [self.rv.table footerEndRefreshing];
  //   [self performSelector:@selector(refresh123) withObject:nil afterDelay:1.5];
 }
 
@@ -280,7 +281,12 @@
                 NSString *string = [[DataHandel shareInstance].infoDAtaArray lastObject];
                 
                 NSString *str1 = [NSString stringWithFormat:@"ios%20%E8%AE%BE%E5%A4%87&from="];
-                newUrl = [NSString stringWithFormat:@"http://api.budejie.com/api/api_open.php?a=list&appname=baisishequ&asid=79C90406-DB8A-4758-9466-DEDB502C2A14&c=data&client=iphone&device=%@ios&jbk=0&mac=&maxtime=%@&market=&openudid=3739a3941c7bb4f82c78c8c53228edcb4a14f0d0&page=0&per=20&sub_flag=1&type=29&udid=&ver=3.6",str1,string];}
+                newUrl = [NSString stringWithFormat:@"http://api.budejie.com/api/api_open.php?a=list&appname=baisishequ&asid=79C90406-DB8A-4758-9466-DEDB502C2A14&c=data&client=iphone&device=%@ios&jbk=0&mac=&maxtime=%@&market=&openudid=3739a3941c7bb4f82c78c8c53228edcb4a14f0d0&page=0&per=20&sub_flag=1&type=29&udid=&ver=3.6",str1,string];
+                [[DataHandel shareInstance] requestUpDataWithUrl:newUrl finshed:^{
+                    
+                    [self.rv.table reloadData];
+                }];
+            }
                 
                 break;
                 
@@ -289,7 +295,13 @@
                  NSString *string = [[DataHandel shareInstance].infoDAtaArray lastObject];
                 
                 NSString *str1 = [NSString stringWithFormat:@"ios%20%E8%AE%BE%E5%A4%87&from="];
-                newUrl = [NSString stringWithFormat:@"http://api.budejie.com/api/api_open.php?a=list&appname=baisishequ&asid=79C90406-DB8A-4758-9466-DEDB502C2A14&c=data&client=iphone&device=%@ios&jbk=0&mac=&maxtime=%@&market=&openudid=3739a3941c7bb4f82c78c8c53228edcb4a14f0d0&page=0&per=20&sub_flag=1&type=10&udid=&ver=3.6",str1,string];}
+                newUrl = [NSString stringWithFormat:@"http://api.budejie.com/api/api_open.php?a=list&appname=baisishequ&asid=79C90406-DB8A-4758-9466-DEDB502C2A14&c=data&client=iphone&device=%@ios&jbk=0&mac=&maxtime=%@&market=&openudid=3739a3941c7bb4f82c78c8c53228edcb4a14f0d0&page=0&per=20&sub_flag=1&type=10&udid=&ver=3.6",str1,string];
+            
+                [[DataHandel shareInstance] requestUpDataWithUrl:newUrl finshed:^{
+                    
+                    [self.rv.table reloadData];
+                }];
+            }
                 
                 break;
             case 2:
@@ -301,10 +313,7 @@
         }
         
         
-        [[DataHandel shareInstance] requestUpDataWithUrl:newUrl finshed:^{
-            
-            [self.rv.table reloadData];
-        }];
+     
         
         
     }
