@@ -35,11 +35,7 @@
     self.table.dataSource = self;
     
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-    button.frame = CGRectMake(150, 60, 100, 30);
-    [button setTitle:@"会话列表" forState:UIControlStateNormal];
-    self.navigationItem.titleView = button;
-    [button addTarget:self action:@selector(TextChatAction) forControlEvents:UIControlEventTouchUpInside];
+    
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
@@ -53,13 +49,25 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame =CGRectMake(0, 0, 40, 40);
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    button.frame = CGRectMake(150, 60, 100, 30);
+    [button setTitle:@"会话列表" forState:UIControlStateNormal];
+    self.navigationItem.titleView = button;
+    [button addTarget:self action:@selector(TextChatAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     if ([Dem_UserData shareInstance].user ==nil) {
+        button.hidden = YES;
         UIBarButtonItem *left = [[UIBarButtonItem alloc]initWithTitle:@"登陆" style:UIBarButtonItemStyleDone target:self action:@selector(loginAction)];
         self.navigationItem.leftBarButtonItem = left;
+        self.navigationItem.rightBarButtonItem = nil;
     }
     else{
+        button.hidden = NO;
         UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(rightAction)];
         self.navigationItem.rightBarButtonItem = right;
         DHSlideMenuController *mainVC = [DHSlideMenuController sharedInstance];
