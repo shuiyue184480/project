@@ -9,6 +9,8 @@
 #import "Dem_BuddyViewController.h"
 #import "Dem_UserData.h"
 #import "Dem_GroupViewController.h"
+#import <RongIMLib/RongIMLib.h>
+#import <RongIMKit/RongIMKit.h>
 
 @interface Dem_BuddyViewController ()
 
@@ -88,6 +90,22 @@
 -(void)addAction{
     [Dem_LeanCloudData addBuddyWithUser:[Dem_UserData shareInstance].user buddy:self.user group:self.array[_num]];
     [self.navigationController popToRootViewControllerAnimated:YES];
+       
+       
+       
+       RCMessage *message = [[RCMessage alloc] initWithType:ConversationType_SYSTEM targetId:self.user.username direction:MessageDirection_SEND messageId:1 content:[RCContactNotificationMessage notificationWithOperation:ContactNotificationMessage_ContactOperationRequest sourceUserId:[Dem_UserData shareInstance].user.username targetUserId:self.user.username message:@"可以添加你为好友吗？" extra:@""]];
+       
+       message.objectName = RCContactNotificationMessageIdentifier;
+       
+       RCMessageContent *content = nil;
+       
+      [[RCIM sharedRCIM] sendMessage:ConversationType_SYSTEM targetId:self.user.username content:content pushContent:@"添加好友" pushData:@"qwer" success:^(long messageId) {
+             
+      } error:^(RCErrorCode nErrorCode, long messageId) {
+             
+      }];
+       
+       
 }
 
 -(void)viewWillAppear:(BOOL)animated{
