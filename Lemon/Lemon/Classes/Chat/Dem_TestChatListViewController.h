@@ -8,6 +8,6 @@
 
 #import <RongIMKit/RongIMKit.h>
 
-@interface Dem_TestChatListViewController : RCConversationListViewController
+@interface Dem_TestChatListViewController : RCConversationListViewController<RCIMReceiveMessageDelegate>
 
 @end

@@ -31,6 +31,9 @@
                                           @(ConversationType_GROUP)]];
     UIBarButtonItem *left = [[UIBarButtonItem alloc]initWithTitle:@"好友列表" style:UIBarButtonItemStyleDone target:self action:@selector(leftAction)];
     self.navigationItem.leftBarButtonItem = left;
+    
+
+    [RCIM sharedRCIM].receiveMessageDelegate = self;
     // Do any additional setup after loading the view.
 }
 
@@ -53,6 +56,11 @@
     }];
     
 }
+
+- (void)onRCIMReceiveMessage:(RCMessage *)message left:(int)left{
+    NSLog(@"%@",message.content);
+}
+
 
 
 - (void)didReceiveMemoryWarning {

@@ -33,11 +33,12 @@
     [self.table registerClass:[UITableViewCell class] forCellReuseIdentifier:@"list_cell"];
     self.table.delegate = self;
     self.table.dataSource = self;
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-    button.frame = CGRectMake(150, 40, 100, 30);
-    [button setTitle:@"jump" forState:UIControlStateNormal];
-    [self.view addSubview:button];
     
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    button.frame = CGRectMake(150, 60, 100, 30);
+    [button setTitle:@"会话列表" forState:UIControlStateNormal];
+    self.navigationItem.titleView = button;
     [button addTarget:self action:@selector(TextChatAction) forControlEvents:UIControlEventTouchUpInside];
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
