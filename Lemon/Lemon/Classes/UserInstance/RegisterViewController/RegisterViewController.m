@@ -79,7 +79,7 @@
        }
        
        // 验证 不区分大小写 字符比较
-       if ([self.codeView.code compare:self.identifyCodeTextField.text options:NSCaseInsensitiveSearch ]) {
+       if ([self.codeView.code isEqualToString:self.identifyCodeTextField.text] == YES) {
               
               Dem_RongData *token = [[Dem_RongData alloc]init];
               [token postRequestWithName:self.userNameTextfield.text block:^(NSString *token) {
@@ -96,13 +96,14 @@
                                    NSLog(@"%@",value.userInfo[@"error"]);
                             }
                             alert.message = @"注册成功";
+                             [self showDetailViewController:alert sender:nil];
                      }];
               }];
        }
        else {
               alert.message = @"验证码错误";
+              [self showDetailViewController:alert sender:nil];
        }
-       [self showDetailViewController:alert sender:nil];
        
        
 }

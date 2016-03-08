@@ -26,15 +26,42 @@
     NSData *data = UIImagePNGRepresentation(user.photo);
     AVFile *file = [AVFile fileWithName:[NSString stringWithFormat:@"%@.png",user.username] data:data];
     
+       
+       UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+       [view setTag:108];
+       [view setBackgroundColor:[UIColor redColor]];
+       [view setAlpha:0.5];
+       UIViewController *vc = [UIApplication sharedApplication].windows[2].rootViewController;
+       [vc.view addSubview:view];
+       //
+       UIActivityIndicatorView *act = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
+       //    [act setCenter:CGPointMake(10, 200)];
+       [act setCenter:view.center];//设置旋转菊花的中心位置
+       [act setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];//设置菊花的样式
+       [view addSubview: act];
+       
+       [act startAnimating];
+       
+       
+
     [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         NSLog(@"%d",succeeded);
         if (succeeded == 1) {
             [file deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 NSLog(@"%@ // %d",error,succeeded);
+                   UIActivityIndicatorView *act = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
+                   [act stopAnimating];
+                   [view removeFromSuperview];
+                   [vc removeFromParentViewController];
+                   
+                   
+                   
+                   
             }];
         }
     } progressBlock:^(NSInteger percentDone) {
-        NSLog(@"%ld",percentDone);
+           
+                  NSLog(@"%ld",percentDone);
     }];
     [Users setObject:file forKey:@"photo"];
     NSError *error = nil;

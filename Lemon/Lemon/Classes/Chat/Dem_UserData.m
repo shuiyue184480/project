@@ -48,7 +48,6 @@ static Dem_UserData *handle = nil;
 -(AVUser *)user{
     if (!_user) {
         _user = [AVUser currentUser];
-        
     }
     return _user;
 }
