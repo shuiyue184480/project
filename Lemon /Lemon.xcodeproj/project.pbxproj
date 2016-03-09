@@ -144,7 +144,6 @@
 		C2172DBB1C8925AB00939D9B /* Dem_GroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2172DBA1C8925AB00939D9B /* Dem_GroupViewController.m */; };
 		C23F73FE1C86921000C1475E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C23F73FD1C86921000C1475E /* LoginViewController.m */; };
 		C23F74011C86921E00C1475E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C23F74001C86921E00C1475E /* RegisterViewController.m */; };
-		C23F74051C869BEF00C1475E /* enjoyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C23F74041C869BEF00C1475E /* enjoyViewController.m */; };
 		C23F74071C869C2A00C1475E /* Duanzi.png in Resources */ = {isa = PBXBuildFile; fileRef = C23F74061C869C2A00C1475E /* Duanzi.png */; };
 		C250FF731C8688BF0044BBD4 /* DAGNewsDeatilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C250FF721C8688BF0044BBD4 /* DAGNewsDeatilViewController.m */; };
 		C250FF761C86990F0044BBD4 /* DAGSearchNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C250FF751C86990F0044BBD4 /* DAGSearchNewsViewController.m */; };
@@ -419,9 +418,7 @@
 		C23F73FD1C86921000C1475E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		C23F73FF1C86921E00C1475E /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		C23F74001C86921E00C1475E /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
-		C23F74031C869BEF00C1475E /* enjoyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = enjoyViewController.h; sourceTree = "<group>"; };
-		C23F74041C869BEF00C1475E /* enjoyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = enjoyViewController.m; sourceTree = "<group>"; };
-		C23F74061C869C2A00C1475E /* Duanzi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Duanzi.png; sourceTree = "<group>"; };
+		C23F74061C869C2A00C1475E /* Duanzi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Duanzi.png; path = ../enjoyViewController/Duanzi.png; sourceTree = "<group>"; };
 		C250FF711C8688BF0044BBD4 /* DAGNewsDeatilViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGNewsDeatilViewController.h; sourceTree = "<group>"; };
 		C250FF721C8688BF0044BBD4 /* DAGNewsDeatilViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGNewsDeatilViewController.m; sourceTree = "<group>"; };
 		C250FF741C86990F0044BBD4 /* DAGSearchNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGSearchNewsViewController.h; sourceTree = "<group>"; };
@@ -811,16 +808,6 @@
 			path = RegisterViewController;
 			sourceTree = "<group>";
 		};
-		C23F74021C869BEF00C1475E /* enjoyViewController */ = {
-			isa = PBXGroup;
-			children = (
-				C23F74061C869C2A00C1475E /* Duanzi.png */,
-				C23F74031C869BEF00C1475E /* enjoyViewController.h */,
-				C23F74041C869BEF00C1475E /* enjoyViewController.m */,
-			);
-			path = enjoyViewController;
-			sourceTree = "<group>";
-		};
 		C2A54D681C86EF4C00C7F4E4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1097,7 +1084,6 @@
 				C2A54D761C8703DC00C7F4E4 /* PicTableViewCell */,
 				C2A54D7A1C8703DC00C7F4E4 /* TextTableViewCell */,
 				C2A54D681C86EF4C00C7F4E4 /* Views */,
-				C23F74021C869BEF00C1475E /* enjoyViewController */,
 				C2E7E7CA1C85BFDA000E94C5 /* ViewControllers */,
 			);
 			path = Duanzi;
@@ -1329,6 +1315,7 @@
 		C2E7E7CA1C85BFDA000E94C5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C23F74061C869C2A00C1475E /* Duanzi.png */,
 				C2E7E7CB1C85BFF8000E94C5 /* RootViewController.h */,
 				C2E7E7CC1C85BFF8000E94C5 /* RootViewController.m */,
 				C2AFE2B31C8D97B000E9B174 /* PostViewController.h */,
@@ -1644,7 +1631,6 @@
 				C2DAC44F1C88695E00FE961A /* SG_NetTools.m in Sources */,
 				C20940D21C869CCD0049AC25 /* Dem_LeanCloudData.m in Sources */,
 				C215A6501C859FF500C5487A /* DHSlideMenuController.m in Sources */,
-				C23F74051C869BEF00C1475E /* enjoyViewController.m in Sources */,
 				C215A56A1C852D5100C5487A /* Dem_ChatViewController.m in Sources */,
 				C2CF9EF61C84707C00031C10 /* UIImage+WebP.m in Sources */,
 				C2CF9EE91C84707C00031C10 /* MJRefreshHeaderView.m in Sources */,

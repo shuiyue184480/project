@@ -65,12 +65,20 @@
 
 
 
-
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [searchBar resignFirstResponder];
+    
+}
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     return self.titleArray.count;
+}
+
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar{
+    [self.searchBar resignFirstResponder];
+    return YES;
 }
 
 
@@ -79,9 +87,8 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"main_cell"];
     }
-    
     cell.textLabel.text = self.titleArray[indexPath.row];
-    NSLog(@"333333%@",cell.textLabel.text);
+
     return cell;
     
     

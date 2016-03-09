@@ -7,7 +7,6 @@
 //
 
 #import "HomeViewController.h"
-#import "enjoyViewController.h"
 #import "RoserViewController.h"
 #import "DAGNewsListViewController.h"
 #import "reserveViewController.h"
@@ -51,11 +50,12 @@
               [ud synchronize];
        }
        
-       // 网络状态改变之后的通知及事件.
+       // 网络状态改变之后的通知及事件.0
        [ability startNotifier];
        
        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NetworkStatusChanged:) name:kReachabilityChangedNotification object:ability];
 }
+
 // 网络状态改变的处理事件
 -(void) NetworkStatusChanged:(NSNotification *) sender {
        Reachability * ability = [sender object];
@@ -85,8 +85,8 @@
        [self checkNetWork];
        
     RootViewController *srvc = [[RootViewController alloc] init];
-    enjoyViewController *evc = [[enjoyViewController alloc] initWithRootViewController:srvc];
-    evc.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"enjoy" image:[UIImage imageNamed:@"duanzi.png"] tag:102];
+    UINavigationController *nsrvc = [[UINavigationController alloc] initWithRootViewController:srvc];
+    nsrvc.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"enjoy" image:[UIImage imageNamed:@"duanzi.png"] tag:102];
     
     
     DAGNewsListViewController *dvc = [[DAGNewsListViewController alloc] init];
@@ -108,7 +108,7 @@
 //       UINavigationController *ndjvc = [[UINavigationController alloc] initWithRootViewController:djvc];
        
        
-    self.viewControllers = @[evc,ndvc,nrvc,ndmvc];
+    self.viewControllers = @[nsrvc,ndvc,nrvc,ndmvc];
 //    self.tabBar.frame = CGRectMake(0, self.view.frame.size.height - 30, self.view.frame.size.width, 30);
     
     // Do any additional setup after loading the view.

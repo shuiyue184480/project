@@ -79,11 +79,13 @@
     
  
 }
+
 - (void) searchAction:(UIBarButtonItem *)sender{
-    SearchViewController *serach = [[SearchViewController alloc] init];
-    [self presentViewController:serach animated:YES completion:nil];
-    
+    SearchViewController *search = [[SearchViewController alloc] init];
+    [self presentViewController:search animated:YES completion:nil];
 }
+
+
 - (void)commentAction:(NSNotification *)sender{
     
     
